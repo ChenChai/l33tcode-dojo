@@ -10,7 +10,7 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
         
-        
+        // Floyd's loop algorithm
         ListNode* fast = head;
         ListNode* slow = head;
         while (true) {
