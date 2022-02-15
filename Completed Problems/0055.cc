@@ -1,15 +1,14 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        vector<int> dp(nums.size(), -1);
-        
-        // the furthest index you can jump to from this square directly  
-        dp[0] = nums[0];
-        
+        int maxReachable = nums[0];
         for (int i = 1; i < nums.size(); i++) {
-            // You can't reach this square rip
-            if (dp[i-1] < i) { return false; }
-            dp[i] = max(dp[i-1], nums[i] + i);
+            if (maxReachable < i) { return false; }
+
+            maxReachable = max(
+                maxReachable,
+                i + nums[i]
+            );
         }
         
         return true;
